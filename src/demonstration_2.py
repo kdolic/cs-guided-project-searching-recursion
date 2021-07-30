@@ -24,6 +24,32 @@ containsTypo(3) -> False
 containsTypo(5) -> True
 containsTypo(4) -> True
 """
+
+def containsTypo(n):
+    if n >= 4:
+        return True
+    else:
+        return False
+
 def firstDraftWithTypo(n):
-    # Your code here
+    floor = 1
+    ceiling = n
+
+    while floor < ceiling:
+        guess = ((ceiling - floor) // 2) + floor
+        print(f'guess: {guess}')
+
+        if guess == ceiling:
+            return floor
+        elif guess == floor:
+            return ceiling
+
+        # Move floor and ceiling accordingly
+        if containsTypo(guess):
+            ceiling = guess
+        else: 
+            floor = guess
+
+print(firstDraftWithTypo(100000))
+
 
